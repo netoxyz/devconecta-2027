@@ -4,6 +4,150 @@
    Os botões base estão em base.css.
    ========================================================================== */
 
+/* ---------- Navbar: logotipo ---------- */
+.navbar__logo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-heading);
+  font-size: var(--fs-md);
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.navbar__logo-mark {
+  display: inline-grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-sm);
+  background: var(--gradient-brand);
+  color: var(--color-text-on-primary);
+  box-shadow: var(--shadow-glow-purple);
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.navbar__logo:hover .navbar__logo-mark {
+  transform: rotate(-8deg) scale(1.05);
+}
+
+/* ---------- Navbar: links ---------- */
+.navbar__link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-medium);
+  color: var(--color-text-muted);
+  transition:
+    color var(--duration-base) var(--ease-out),
+    background-color var(--duration-base) var(--ease-out);
+}
+
+.navbar__link:hover {
+  color: var(--color-text);
+  background-color: rgba(148, 163, 196, 0.08);
+}
+
+/* Link da seção visível (scroll spy) */
+.navbar__link.is-active {
+  color: var(--color-text);
+}
+
+/* Indicador do link ativo: barra lateral no mobile */
+.navbar__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 3px;
+  height: 0;
+  border-radius: var(--radius-full);
+  background: var(--gradient-electric);
+  transform: translateY(-50%);
+  transition: height var(--duration-base) var(--ease-out);
+}
+
+.navbar__link.is-active::after {
+  height: 60%;
+}
+
+@media (min-width: 960px) {
+  .navbar__link {
+    font-size: var(--fs-sm);
+  }
+
+  /* No desktop, o indicador vira um sublinhado em gradiente */
+  .navbar__link::after {
+    left: var(--space-3);
+    right: var(--space-3);
+    top: auto;
+    bottom: 4px;
+    width: auto;
+    height: 2px;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform var(--duration-base) var(--ease-out);
+  }
+
+  .navbar__link.is-active::after {
+    height: 2px;
+    transform: scaleX(1);
+  }
+}
+
+/* ---------- Navbar: botão hambúrguer ---------- */
+.navbar__toggle {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  border: var(--border-width) solid var(--color-border);
+  transition: border-color var(--duration-base) var(--ease-out);
+}
+
+.navbar__toggle:hover {
+  border-color: var(--color-border-strong);
+}
+
+.navbar__toggle-bar {
+  display: block;
+  width: 20px;
+  height: 2px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-text);
+  transition:
+    transform var(--duration-base) var(--ease-out),
+    opacity var(--duration-fast) var(--ease-out);
+}
+
+/* Animação hambúrguer → "X" */
+.navbar__toggle[aria-expanded="true"] .navbar__toggle-bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.navbar__toggle[aria-expanded="true"] .navbar__toggle-bar:nth-child(2) {
+  opacity: 0;
+}
+
+.navbar__toggle[aria-expanded="true"] .navbar__toggle-bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+@media (min-width: 960px) {
+  .navbar__toggle {
+    display: none;
+  }
+}
+
 /* ---------- Cards ---------- */
 /* Etapas 4 e 6 */
 

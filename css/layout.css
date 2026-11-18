@@ -8,6 +8,11 @@
   padding-block: var(--section-padding);
 }
 
+/* A primeira seção começa abaixo da navbar fixa (evita sobreposição no topo) */
+main > .section:first-child {
+  padding-top: calc(var(--navbar-height) + var(--section-padding));
+}
+
 .section--alt {
   background-color: var(--color-bg-alt);
 }
@@ -17,7 +22,144 @@
 }
 
 /* ---------- Header / Navbar ---------- */
-/* Estilos completos e menu mobile: Etapa 2 */
+.site-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: var(--z-header);
+  height: var(--navbar-height);
+}
+
+/*
+ * O fundo "glass" fica em um pseudo-elemento, não no próprio header:
+ * backdrop-filter no header criaria um novo bloco de contenção para
+ * elementos fixed, e o painel/backdrop do menu mobile ficariam presos
+ * dentro dos 72px do header.
+ */
+.site-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-color: transparent;
+  border-bottom: var(--border-width) solid transparent;
+  transition:
+    background-color var(--duration-base) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out);
+}
+
+/* Estado após rolar (ou com o menu mobile aberto): glassmorphism */
+.site-header.is-scrolled::before,
+.site-header.is-menu-open::before {
+  background-color: rgba(10, 15, 31, 0.72);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  backdrop-filter: blur(14px) saturate(140%);
+  border-bottom-color: var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.navbar {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  height: 100%;
+}
+
+/* ---------- Menu: mobile/tablet (padrão, mobile-first) ---------- */
+.navbar__panel {
+  position: fixed;
+  top: var(--navbar-height);
+  right: 0;
+  bottom: 0;
+  width: min(320px, 85vw);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  padding: var(--space-5);
+  overflow-y: auto;
+  background-color: var(--color-bg-alt);
+  border-left: var(--border-width) solid var(--color-border);
+  box-shadow: var(--shadow-lg);
+  transform: translateX(100%);
+  visibility: hidden; /* remove os links da ordem de tabulação quando fechado */
+  transition:
+    transform var(--duration-slow) var(--ease-out),
+    visibility 0s linear var(--duration-slow);
+}
+
+.site-header.is-menu-open .navbar__panel {
+  transform: translateX(0);
+  visibility: visible;
+  transition:
+    transform var(--duration-slow) var(--ease-out),
+    visibility 0s linear 0s;
+}
+
+.navbar__menu {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.navbar__cta {
+  width: 100%;
+  min-height: 48px;
+}
+
+.navbar__backdrop {
+  position: fixed;
+  inset: var(--navbar-height) 0 0 0;
+  z-index: 0;
+  background-color: rgba(5, 8, 18, 0.6);
+  opacity: 0;
+  transition: opacity var(--duration-base) var(--ease-out);
+}
+
+.site-header.is-menu-open .navbar__backdrop {
+  opacity: 1;
+}
+
+/* Impede a rolagem da página enquanto o menu mobile está aberto */
+body.has-menu-open {
+  overflow: hidden;
+}
+
+/* ---------- Menu: desktop ---------- */
+@media (min-width: 960px) {
+  .navbar__panel {
+    position: static;
+    width: auto;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-5);
+    padding: 0;
+    overflow: visible;
+    background: none;
+    border: none;
+    box-shadow: none;
+    transform: none;
+    visibility: visible;
+    transition: none;
+  }
+
+  .navbar__menu {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-1);
+  }
+
+  .navbar__cta {
+    width: auto;
+    min-height: 40px;
+  }
+
+  .navbar__backdrop {
+    display: none;
+  }
+}
 
 /* ---------- Footer ---------- */
 /* Estilos completos: Etapa 9 */
