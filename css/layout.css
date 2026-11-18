@@ -1,0 +1,23 @@
+/* ==========================================================================
+   DevConecta 2027 — Layout
+   Estrutura geral: header/navbar, seções, grids e footer.
+   ========================================================================== */
+
+/* ---------- Seções (estrutura comum) ---------- */
+.section {
+  padding-block: var(--section-padding);
+}
+
+.section--alt {
+  background-color: var(--color-bg-alt);
+}
+
+.section__header {
+  margin-bottom: var(--space-7);
+}
+
+/* ---------- Header / Navbar ---------- */
+/* Estilos completos e menu mobile: Etapa 2 */
+
+/* ---------- Footer ---------- */
+/* Estilos completos: Etapa 9 */

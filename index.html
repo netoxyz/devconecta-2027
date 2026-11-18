@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO básico -->
+  <title>DevConecta 2027 — Evento Acadêmico de Tecnologia</title>
+  <meta name="description" content="DevConecta 2027: evento acadêmico de tecnologia sobre programação, inteligência artificial, inovação e desenvolvimento de software.">
+  <meta name="theme-color" content="#0A0F1F">
+  <meta name="color-scheme" content="dark">
+
+  <!-- Fontes: Space Grotesk (títulos), Inter (corpo), JetBrains Mono (detalhes técnicos) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap">
+
+  <!-- Estilos (ordem importa: tokens → base → layout → componentes → seções → animações) -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/animations.css">
+
+  <!-- JavaScript como módulo ES (carregado de forma adiada por padrão) -->
+  <script type="module" src="js/main.js"></script>
+</head>
+<body>
+  <!-- Atalho de acessibilidade para usuários de teclado/leitores de tela -->
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <!-- 1. NAVBAR -->
+  <header class="site-header" id="topo">
+    <nav class="navbar container" aria-label="Navegação principal">
+      <a class="navbar__logo" href="#inicio" aria-label="DevConecta 2027 — voltar ao início">
+        DevConecta <span class="text-gradient">2027</span>
+      </a>
+
+      <button class="navbar__toggle" type="button"
+              aria-expanded="false" aria-controls="navbar-menu"
+              aria-label="Abrir menu de navegação">
+        <span class="navbar__toggle-bar" aria-hidden="true"></span>
+        <span class="navbar__toggle-bar" aria-hidden="true"></span>
+        <span class="navbar__toggle-bar" aria-hidden="true"></span>
+      </button>
+
+      <ul class="navbar__menu" id="navbar-menu">
+        <li><a class="navbar__link" href="#sobre">Sobre</a></li>
+        <li><a class="navbar__link" href="#programacao">Programação</a></li>
+        <li><a class="navbar__link" href="#palestrantes">Palestrantes</a></li>
+        <li><a class="navbar__link" href="#faq">FAQ</a></li>
+        <li><a class="btn btn--primary btn--sm" href="#inscricao">Inscreva-se</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="conteudo" tabindex="-1">
+
+    <!-- 2. HERO -->
+    <section class="section hero" id="inicio" aria-labelledby="hero-titulo">
+      <div class="container">
+        <h1 id="hero-titulo">DevConecta <span class="text-gradient">2027</span></h1>
+        <p class="lead">Evento acadêmico de tecnologia, programação, inteligência artificial e inovação.</p>
+        <!-- Conteúdo completo e contagem regressiva: Etapa 3 -->
+        <div class="hero__countdown" data-countdown aria-live="polite"></div>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#inscricao">Garantir minha vaga</a>
+          <a class="btn btn--outline" href="#programacao">Ver programação</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. SOBRE -->
+    <section class="section" id="sobre" aria-labelledby="sobre-titulo">
+      <div class="container">
+        <header class="section__header">
+          <h2 id="sobre-titulo" class="section__title">Sobre o evento</h2>
+        </header>
+        <!-- Pilares e contadores animados: Etapa 4 -->
+      </div>
+    </section>
+
+    <!-- 4. PROGRAMAÇÃO -->
+    <section class="section section--alt" id="programacao" aria-labelledby="programacao-titulo">
+      <div class="container">
+        <header class="section__header">
+          <h2 id="programacao-titulo" class="section__title">Programação</h2>
+        </header>
+        <!-- Abas por dia, filtros por trilha e linha do tempo: Etapa 5 -->
+        <div class="schedule" data-schedule></div>
+      </div>
+    </section>
+
+    <!-- 5. PALESTRANTES -->
+    <section class="section" id="palestrantes" aria-labelledby="palestrantes-titulo">
+      <div class="container">
+        <header class="section__header">
+          <h2 id="palestrantes-titulo" class="section__title">Palestrantes</h2>
+        </header>
+        <!-- Grade de cards e modal: Etapa 6 -->
+        <div class="speakers" data-speakers></div>
+      </div>
+    </section>
+
+    <!-- 6. INSCRIÇÃO -->
+    <section class="section section--alt" id="inscricao" aria-labelledby="inscricao-titulo">
+      <div class="container">
+        <header class="section__header">
+          <h2 id="inscricao-titulo" class="section__title">Inscrição</h2>
+        </header>
+        <!-- Formulário, validação e LocalStorage: Etapas 7 e 8 -->
+        <form class="form" id="form-inscricao" novalidate></form>
+      </div>
+    </section>
+
+    <!-- 7. FAQ -->
+    <section class="section" id="faq" aria-labelledby="faq-titulo">
+      <div class="container">
+        <header class="section__header">
+          <h2 id="faq-titulo" class="section__title">Perguntas frequentes</h2>
+        </header>
+        <!-- Acordeão: Etapa 9 -->
+        <div class="faq" data-faq></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 8. FOOTER -->
+  <footer class="site-footer" id="rodape">
+    <div class="container">
+      <!-- Links, créditos e "voltar ao topo": Etapa 9 -->
+      <p class="site-footer__copy">&copy; 2027 DevConecta. Projeto acadêmico — Desenvolvimento de Interfaces.</p>
+      <a class="site-footer__top" href="#inicio">Voltar ao topo</a>
+    </div>
+  </footer>
+
+  <!-- Contêiner para notificações (toasts) acessíveis -->
+  <div class="toast-region" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>
