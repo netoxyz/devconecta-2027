@@ -57,7 +57,7 @@ export const scheduleDays = [
         title: 'Front-end moderno com HTML, CSS e JavaScript puro',
         description: 'Mão na massa: componentes, layout responsivo e interatividade sem depender de frameworks.',
         speaker: 'Camila Torres',
-        role: 'Desenvolvedora Front-end',
+        role: 'Desenvolvedora Front-end Sênior',
       },
       {
         start: '14:00',

@@ -5,13 +5,12 @@
  * então o DOM já está disponível quando este arquivo executa).
  *
  * Cada funcionalidade vive em seu próprio módulo em js/modules/.
- * Os módulos ainda estão vazios e serão implementados etapa por etapa.
+ * A ordem segue a ordem das seções na página.
  */
 
 import { initNavbar } from './modules/navbar.js';
 import { initCountdown } from './modules/countdown.js';
 import { initReveal } from './modules/reveal.js';
-import { initCounters } from './modules/counters.js';
 import { initSchedule } from './modules/schedule.js';
 import { initSpeakers } from './modules/speakers.js';
 import { initForm } from './modules/form.js';
@@ -22,7 +21,6 @@ const modules = [
   ['navbar', initNavbar],
   ['countdown', initCountdown],
   ['reveal', initReveal],
-  ['counters', initCounters],
   ['schedule', initSchedule],
   ['speakers', initSpeakers],
   ['form', initForm],

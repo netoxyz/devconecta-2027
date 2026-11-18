@@ -403,9 +403,6 @@
 .tk-str { color: var(--color-cyan); }
 .tk-num { color: #F5B544; }
 
-/* ---------- Cards ---------- */
-/* Etapas 4 e 6 */
-
 /* ---------- Abas ---------- */
 .tabs {
   display: inline-flex;
@@ -926,9 +923,6 @@
     padding: 0 var(--space-4) var(--space-4);
   }
 }
-
-/* ---------- Modal ---------- */
-/* Reservado para uso futuro */
 
 /* ---------- Aviso (notice) ---------- */
 .notice {
