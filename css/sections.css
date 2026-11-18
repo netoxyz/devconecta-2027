@@ -840,4 +840,28 @@ main > .hero:first-child {
 }
 
 /* ---------- FAQ (#faq) ---------- */
-/* Etapa 9 */
+.faq-section__inner {
+  display: grid;
+  gap: var(--space-6);
+  align-items: start;
+}
+
+.faq-section__header {
+  margin-bottom: 0;
+}
+
+.faq-section__cta {
+  margin-top: var(--space-5);
+}
+
+@media (min-width: 1024px) {
+  .faq-section__inner {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: var(--space-8);
+  }
+
+  .faq-section__header {
+    position: sticky;
+    top: calc(var(--navbar-height) + var(--space-6));
+  }
+}
