@@ -487,11 +487,23 @@
     <!-- 5. PALESTRANTES -->
     <section class="section" id="palestrantes" aria-labelledby="palestrantes-titulo">
       <div class="container">
-        <header class="section__header">
-          <h2 id="palestrantes-titulo" class="section__title">Palestrantes</h2>
+        <header class="section__header" data-reveal>
+          <p class="section__eyebrow">Palestrantes</p>
+          <h2 id="palestrantes-titulo" class="section__title">
+            Quem está construindo o
+            <span class="text-gradient">futuro da tecnologia?</span>
+          </h2>
+          <p class="section__lead">
+            Pesquisadores, engenheiros e líderes que transformam conhecimento em impacto
+            e vêm a Brasília compartilhar o que aprenderam no caminho.
+          </p>
         </header>
-        <!-- Grade de cards e modal: Etapa 6 -->
-        <div class="speakers" data-speakers></div>
+
+        <!-- Cards gerados por js/modules/speakers.js a partir de js/data/speakers.js -->
+        <ul class="speakers" data-speakers data-reveal aria-label="Palestrantes do evento"></ul>
+        <noscript>
+          <p class="schedule__empty">Ative o JavaScript para visualizar os palestrantes.</p>
+        </noscript>
       </div>
     </section>
 

@@ -633,8 +633,150 @@
   color: var(--color-text-muted);
 }
 
+/* ---------- Card de palestrante ---------- */
+.speaker-card {
+  --accent: var(--color-primary);
+  --accent-2: var(--color-purple);
+  display: flex;
+}
+
+.speaker-card--purple { --accent: var(--color-purple);  --accent-2: #C084FC; }
+.speaker-card--blue   { --accent: var(--color-primary); --accent-2: var(--color-cyan); }
+.speaker-card--cyan   { --accent: var(--color-cyan);    --accent-2: var(--color-primary); }
+.speaker-card--lilac  { --accent: #A78BFA;              --accent-2: var(--color-primary); }
+
+.speaker-card__inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-3);
+  width: 100%;
+  padding: var(--space-6) var(--space-5) var(--space-5);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-xl);
+  background: var(--gradient-surface);
+  overflow: hidden;
+  transition:
+    transform var(--duration-base) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out);
+}
+
+/* Faixa de cor no topo do card */
+.speaker-card__inner::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 96px;
+  background: linear-gradient(135deg,
+    color-mix(in srgb, var(--accent) 22%, transparent),
+    color-mix(in srgb, var(--accent-2) 8%, transparent));
+  pointer-events: none;
+}
+
+.speaker-card__inner:hover {
+  transform: translateY(-6px);
+  border-color: color-mix(in srgb, var(--accent) 45%, transparent);
+  box-shadow: var(--shadow-lg), 0 0 32px color-mix(in srgb, var(--accent) 18%, transparent);
+}
+
+/* Avatar: anel em gradiente + iniciais */
+.speaker-card__avatar {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 84px;
+  height: 84px;
+  margin-bottom: var(--space-2);
+  padding: 3px;
+  border-radius: 50%;
+  background: conic-gradient(from 180deg, var(--accent), var(--accent-2), var(--accent));
+  box-shadow: 0 8px 24px color-mix(in srgb, var(--accent) 30%, transparent);
+  transition: transform var(--duration-slow) var(--ease-out);
+}
+
+.speaker-card__inner:hover .speaker-card__avatar {
+  transform: scale(1.06) rotate(-6deg);
+}
+
+.speaker-card__initials {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 30% 25%, color-mix(in srgb, var(--accent) 35%, transparent), transparent 60%),
+    var(--color-surface);
+  font-family: var(--font-heading);
+  font-size: 1.625rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.02em;
+  color: var(--color-text);
+}
+
+.speaker-card__specialty {
+  padding: 2px var(--space-3);
+  border: var(--border-width) solid color-mix(in srgb, var(--accent) 40%, transparent);
+  border-radius: var(--radius-full);
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+}
+
+.speaker-card__header {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.speaker-card__name {
+  font-size: var(--fs-lg);
+}
+
+.speaker-card__role {
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+  line-height: var(--lh-snug);
+}
+
+.speaker-card__company {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--accent);
+}
+
+.speaker-card__talk {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  border-left: 2px solid var(--accent);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  background-color: rgba(10, 15, 31, 0.45);
+}
+
+.speaker-card__talk-label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.speaker-card__talk-title {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-snug);
+  color: var(--color-text);
+}
+
+.speaker-card__bio {
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+}
+
 /* ---------- Modal ---------- */
-/* Etapa 6 */
+/* Reservado para uso futuro */
 
 /* ---------- Campos de formulário ---------- */
 /* Etapa 7 */

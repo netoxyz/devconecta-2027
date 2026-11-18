@@ -23,8 +23,11 @@ export function initReveal() {
       obs.unobserve(entry.target); // anima apenas uma vez
     });
   }, {
-    rootMargin: '0px 0px -10% 0px', // dispara um pouco antes do fim da tela
-    threshold: 0.15,
+    // Dispara quando o topo do elemento passa de 90% da altura da tela.
+    // threshold 0 (e não uma porcentagem) garante que elementos mais altos
+    // que a tela, como a grade de palestrantes no celular, também apareçam.
+    rootMargin: '0px 0px -10% 0px',
+    threshold: 0,
   });
 
   elements.forEach((element) => observer.observe(element));

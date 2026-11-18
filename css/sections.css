@@ -735,7 +735,23 @@ main > .hero:first-child {
 }
 
 /* ---------- Palestrantes (#palestrantes) ---------- */
-/* Etapa 6 */
+.speakers {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+}
+
+@media (min-width: 640px) {
+  .speakers {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1100px) {
+  .speakers {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
 
 /* ---------- Inscrição (#inscricao) ---------- */
 /* Etapas 7 e 8 */
