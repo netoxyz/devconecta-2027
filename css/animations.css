@@ -92,5 +92,32 @@
   }
 }
 
-/* ---------- Reveal ao rolar ---------- */
-/* Etapa 4 */
+/* ---------- Reveal ao rolar ----------
+   Elementos com [data-reveal] começam ocultos somente quando o JS está
+   ativo (classe .js-reveal no <html>, adicionada por js/modules/reveal.js).
+   Sem JavaScript, o conteúdo continua visível normalmente.
+   Atraso opcional por elemento: style="--reveal-delay: 100ms".
+
+   Usa a propriedade "translate" (e não "transform") para não conflitar
+   com efeitos de hover dos componentes, que usam transform. */
+@keyframes reveal-in {
+  from { opacity: 0; translate: 0 24px; }
+  to   { opacity: 1; translate: 0 0; }
+}
+
+.js-reveal [data-reveal] {
+  opacity: 0;
+}
+
+.js-reveal [data-reveal].is-visible {
+  animation: reveal-in var(--duration-slow) var(--ease-out) var(--reveal-delay, 0ms) both;
+}
+
+/* Movimento reduzido: conteúdo aparece direto, sem deslocamento */
+@media (prefers-reduced-motion: reduce) {
+  .js-reveal [data-reveal],
+  .js-reveal [data-reveal].is-visible {
+    opacity: 1;
+    animation: none !important;
+  }
+}

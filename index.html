@@ -304,12 +304,145 @@
     </section>
 
     <!-- 3. SOBRE -->
-    <section class="section" id="sobre" aria-labelledby="sobre-titulo">
+    <section class="section about" id="sobre" aria-labelledby="sobre-titulo">
+      <!-- Detalhe decorativo: linha de luz no topo da seção -->
+      <div class="about__decor" aria-hidden="true"></div>
+
       <div class="container">
-        <header class="section__header">
-          <h2 id="sobre-titulo" class="section__title">Sobre o evento</h2>
-        </header>
-        <!-- Pilares e contadores animados: Etapa 4 -->
+        <div class="about__intro">
+          <header class="section__header about__header" data-reveal>
+            <p class="section__eyebrow">Sobre o evento</p>
+            <h2 id="sobre-titulo" class="section__title">
+              Muito além de um evento.
+              <span class="text-gradient">Uma experiência de conexão.</span>
+            </h2>
+          </header>
+
+          <div class="about__text" data-reveal style="--reveal-delay: 120ms">
+            <p>
+              O DevConecta 2027 nasceu para aproximar a sala de aula do mercado de tecnologia.
+              Durante dois dias em Brasília, estudantes, professores, pesquisadores e
+              profissionais se encontram para compartilhar conhecimento, discutir tendências
+              e construir pontes entre a teoria e a prática.
+            </p>
+            <p>
+              Nosso objetivo é inspirar a próxima geração de desenvolvedores, estimular a troca
+              de experiências e mostrar como a tecnologia pode transformar carreiras, empresas
+              e a sociedade.
+            </p>
+
+            <ul class="about__goals">
+              <li>
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"
+                     stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+                Aprender com especialistas
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"
+                     stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+                Ampliar sua rede de contatos
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"
+                     stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+                Descobrir novas oportunidades
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Áreas do evento -->
+        <ul class="about__areas" aria-label="Principais áreas do evento">
+          <li class="area-card area-card--ia" data-reveal style="--reveal-delay: 0ms">
+            <span class="area-card__index" aria-hidden="true">01</span>
+            <span class="area-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8"
+                   stroke-linecap="round" stroke-linejoin="round" focusable="false">
+                <path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/>
+                <path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/>
+              </svg>
+            </span>
+            <h3 class="area-card__title">Inteligência Artificial</h3>
+            <p class="area-card__text">
+              Aprendizado de máquina, modelos generativos e o uso responsável da IA em produtos e pesquisas.
+            </p>
+            <ul class="area-card__tags">
+              <li>Machine Learning</li>
+              <li>IA Generativa</li>
+              <li>Ética</li>
+            </ul>
+          </li>
+
+          <li class="area-card area-card--web" data-reveal style="--reveal-delay: 100ms">
+            <span class="area-card__index" aria-hidden="true">02</span>
+            <span class="area-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8"
+                   stroke-linecap="round" stroke-linejoin="round" focusable="false">
+                <rect x="3" y="4" width="18" height="16" rx="2"/>
+                <line x1="3" y1="9" x2="21" y2="9"/>
+                <polyline points="10 13 8 15 10 17"/>
+                <polyline points="14 13 16 15 14 17"/>
+              </svg>
+            </span>
+            <h3 class="area-card__title">Desenvolvimento Web</h3>
+            <p class="area-card__text">
+              Interfaces modernas, acessibilidade, performance e as boas práticas que sustentam aplicações de qualidade.
+            </p>
+            <ul class="area-card__tags">
+              <li>Front-end</li>
+              <li>Acessibilidade</li>
+              <li>APIs</li>
+            </ul>
+          </li>
+
+          <li class="area-card area-card--inovacao" data-reveal style="--reveal-delay: 200ms">
+            <span class="area-card__index" aria-hidden="true">03</span>
+            <span class="area-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8"
+                   stroke-linecap="round" stroke-linejoin="round" focusable="false">
+                <path d="M9 18h6"/>
+                <path d="M10 22h4"/>
+                <path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1V17h6v-.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2z"/>
+              </svg>
+            </span>
+            <h3 class="area-card__title">Inovação e Tecnologia</h3>
+            <p class="area-card__text">
+              Startups, transformação digital e as tecnologias emergentes que estão redefinindo o mundo.
+            </p>
+            <ul class="area-card__tags">
+              <li>Startups</li>
+              <li>Cloud</li>
+              <li>IoT</li>
+            </ul>
+          </li>
+
+          <li class="area-card area-card--carreira" data-reveal style="--reveal-delay: 300ms">
+            <span class="area-card__index" aria-hidden="true">04</span>
+            <span class="area-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8"
+                   stroke-linecap="round" stroke-linejoin="round" focusable="false">
+                <rect x="2" y="7" width="20" height="14" rx="2"/>
+                <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
+                <path d="M2 13h20"/>
+              </svg>
+            </span>
+            <h3 class="area-card__title">Carreira e Mercado de Trabalho</h3>
+            <p class="area-card__text">
+              Primeiro emprego, portfólio, habilidades comportamentais e conversas francas com quem já trilhou esse caminho.
+            </p>
+            <ul class="area-card__tags">
+              <li>Portfólio</li>
+              <li>Entrevistas</li>
+              <li>Soft skills</li>
+            </ul>
+          </li>
+        </ul>
       </div>
     </section>
 

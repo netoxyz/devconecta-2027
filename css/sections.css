@@ -385,7 +385,231 @@ main > .hero:first-child {
 }
 
 /* ---------- Sobre (#sobre) ---------- */
-/* Etapa 4 */
+.about {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+/* Linha de luz no topo e brilho difuso de fundo */
+.about__decor {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.about__decor::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: min(80%, 900px);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.6), rgba(139, 92, 246, 0.6), transparent);
+  transform: translateX(-50%);
+}
+
+.about__decor::after {
+  content: "";
+  position: absolute;
+  top: 30%;
+  right: -10%;
+  width: 520px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.16), transparent 70%);
+  filter: blur(40px);
+}
+
+/* Introdução: título + texto */
+.about__intro {
+  display: grid;
+  gap: var(--space-5);
+  margin-bottom: var(--space-7);
+}
+
+.about__header {
+  margin-bottom: 0;
+}
+
+.about__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  color: var(--color-text-muted);
+  font-size: var(--fs-md);
+}
+
+.about__goals {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-5);
+  margin-top: var(--space-2);
+}
+
+.about__goals li {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-medium);
+  color: var(--color-text);
+}
+
+.about__goals svg {
+  flex-shrink: 0;
+  color: var(--color-success);
+}
+
+/* Grade de cards das áreas */
+.about__areas {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+}
+
+/* Card de área */
+.area-card {
+  --accent: var(--color-primary);
+  --accent-soft: rgba(59, 130, 246, 0.12);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-5);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--gradient-surface);
+  overflow: hidden;
+  transition:
+    transform var(--duration-base) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out);
+}
+
+.area-card--ia       { --accent: var(--color-purple);  --accent-soft: rgba(139, 92, 246, 0.14); }
+.area-card--web      { --accent: var(--color-primary); --accent-soft: rgba(59, 130, 246, 0.14); }
+.area-card--inovacao { --accent: var(--color-cyan);    --accent-soft: rgba(0, 212, 255, 0.12); }
+.area-card--carreira { --accent: #A78BFA;              --accent-soft: rgba(167, 139, 250, 0.14); }
+
+/* Brilho que acende no canto superior ao passar o mouse */
+.area-card::before {
+  content: "";
+  position: absolute;
+  top: -40%;
+  right: -40%;
+  width: 80%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--accent-soft), transparent 70%);
+  opacity: 0;
+  transition: opacity var(--duration-base) var(--ease-out);
+  pointer-events: none;
+}
+
+/* Linha em gradiente na base do card */
+.area-card::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--gradient-electric);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--duration-slow) var(--ease-out);
+}
+
+.area-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--color-border-strong);
+  box-shadow: var(--shadow-lg);
+}
+
+.area-card:hover::before {
+  opacity: 1;
+}
+
+.area-card:hover::after {
+  transform: scaleX(1);
+}
+
+.area-card__index {
+  position: absolute;
+  top: var(--space-5);
+  right: var(--space-5);
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+  opacity: 0.6;
+}
+
+.area-card__icon {
+  display: inline-grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  margin-bottom: var(--space-2);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--accent-soft);
+  color: var(--accent);
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.area-card:hover .area-card__icon {
+  transform: scale(1.08) rotate(-4deg);
+}
+
+.area-card__title {
+  font-size: var(--fs-lg);
+}
+
+.area-card__text {
+  flex-grow: 1;
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+}
+
+.area-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+.area-card__tags li {
+  padding: 2px var(--space-2);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-full);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+}
+
+/* Tablet: 2 colunas de cards */
+@media (min-width: 640px) {
+  .about__areas {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-5);
+  }
+}
+
+/* Desktop: introdução em 2 colunas e 4 cards lado a lado */
+@media (min-width: 1024px) {
+  .about__intro {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: var(--space-8);
+    align-items: end;
+    margin-bottom: var(--space-8);
+  }
+
+  .about__areas {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
 
 /* ---------- Programação (#programacao) ---------- */
 /* Etapa 5 */
