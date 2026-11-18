@@ -754,7 +754,90 @@ main > .hero:first-child {
 }
 
 /* ---------- Inscrição (#inscricao) ---------- */
-/* Etapas 7 e 8 */
+.register__inner {
+  display: grid;
+  gap: var(--space-7);
+  align-items: start;
+}
+
+.register__header {
+  margin-bottom: var(--space-6);
+}
+
+.register__benefits {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.register__benefits li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  color: var(--color-text);
+  font-weight: var(--fw-medium);
+}
+
+.register__benefits svg {
+  flex-shrink: 0;
+  box-sizing: content-box;
+  padding: var(--space-2);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background-color: rgba(59, 130, 246, 0.1);
+  color: var(--color-cyan);
+}
+
+/* Cartão que contém o formulário e o comprovante */
+.register__card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  padding: var(--space-5);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-xl);
+  background: var(--gradient-surface);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Linha de luz no topo do cartão */
+.register__card::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: var(--space-7);
+  right: var(--space-7);
+  height: 1px;
+  background: var(--gradient-electric);
+}
+
+.form__submit {
+  width: 100%;
+  margin-top: var(--space-5);
+}
+
+.form[hidden] {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .register__card {
+    padding: var(--space-6);
+  }
+}
+
+@media (min-width: 1024px) {
+  .register__inner {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    gap: var(--space-8);
+  }
+
+  .register__intro {
+    position: sticky;
+    top: calc(var(--navbar-height) + var(--space-6));
+  }
+}
 
 /* ---------- FAQ (#faq) ---------- */
 /* Etapa 9 */

@@ -778,8 +778,497 @@
 /* ---------- Modal ---------- */
 /* Reservado para uso futuro */
 
+/* ---------- Aviso (notice) ---------- */
+.notice {
+  display: flex;
+  gap: var(--space-3);
+  align-items: flex-start;
+  padding: var(--space-3) var(--space-4);
+  border: var(--border-width) solid rgba(0, 212, 255, 0.3);
+  border-radius: var(--radius-md);
+  background-color: rgba(0, 212, 255, 0.07);
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+}
+
+.notice svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--color-cyan);
+}
+
+.notice strong {
+  color: var(--color-text);
+}
+
 /* ---------- Campos de formulário ---------- */
-/* Etapa 7 */
+.form__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  min-width: 0;
+  grid-column: span 2;
+  border: 0;
+}
+
+@media (min-width: 480px) {
+  .field:not(.field--full) {
+    grid-column: span 1;
+  }
+}
+
+.field__label {
+  padding: 0;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text);
+}
+
+.field__input {
+  width: 100%;
+  min-height: 48px;
+  padding: var(--space-3) var(--space-4);
+  border: var(--border-width) solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  background-color: rgba(10, 15, 31, 0.65);
+  color: var(--color-text);
+  font-size: var(--fs-base);
+  transition:
+    border-color var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out),
+    background-color var(--duration-base) var(--ease-out);
+}
+
+.field__input::placeholder {
+  color: rgba(148, 163, 196, 0.6);
+}
+
+.field__input:hover {
+  border-color: rgba(148, 163, 196, 0.5);
+}
+
+.field__input:focus-visible,
+.field__input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  background-color: rgba(10, 15, 31, 0.9);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+  border-radius: var(--radius-md);
+}
+
+/* Select com seta personalizada */
+.field__select {
+  appearance: none;
+  padding-right: var(--space-7);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2394A3C4' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--space-4) center;
+  background-size: 18px;
+  cursor: pointer;
+}
+
+.field__select option {
+  background-color: var(--color-bg-alt);
+  color: var(--color-text);
+}
+
+/* Estados de validação */
+.field.is-valid .field__input {
+  border-color: rgba(34, 197, 94, 0.55);
+}
+
+.field.is-invalid .field__input {
+  border-color: var(--color-error);
+}
+
+.field.is-invalid .field__input:focus {
+  box-shadow: 0 0 0 3px rgba(244, 63, 94, 0.25);
+}
+
+.field__error {
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  color: var(--color-error);
+  max-width: none;
+}
+
+.field__error:empty {
+  display: none;
+}
+
+.field.is-invalid .field__error {
+  animation: shake 300ms var(--ease-out);
+}
+
+/* ---------- Seleção de trilha (radios em cartões) ---------- */
+.track-picker {
+  padding: 0;
+  margin: 0;
+}
+
+.track-picker__options {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-2);
+}
+
+@media (min-width: 480px) {
+  .track-picker__options {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.track-option {
+  --accent: var(--color-primary);
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: 48px;
+  padding: var(--space-3) var(--space-4);
+  border: var(--border-width) solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  background-color: rgba(10, 15, 31, 0.65);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition:
+    border-color var(--duration-base) var(--ease-out),
+    background-color var(--duration-base) var(--ease-out),
+    color var(--duration-base) var(--ease-out);
+}
+
+.track-option--ia       { --accent: var(--color-purple); }
+.track-option--web      { --accent: var(--color-primary); }
+.track-option--inovacao { --accent: var(--color-cyan); }
+.track-option--carreira { --accent: #A78BFA; }
+
+.track-option:hover {
+  border-color: color-mix(in srgb, var(--accent) 60%, transparent);
+  color: var(--color-text);
+}
+
+/* O radio nativo fica invisível, mas continua acessível por teclado */
+.track-option input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+.track-option__dot {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--color-border-strong);
+  border-radius: 50%;
+  transition: border-color var(--duration-base) var(--ease-out), box-shadow var(--duration-base) var(--ease-out);
+}
+
+.track-option:has(input:checked) {
+  border-color: var(--accent);
+  background-color: color-mix(in srgb, var(--accent) 14%, transparent);
+  color: var(--color-text);
+}
+
+.track-option:has(input:checked) .track-option__dot {
+  border-color: var(--accent);
+  box-shadow: inset 0 0 0 4px var(--color-bg), inset 0 0 0 10px var(--accent);
+}
+
+.track-option:has(input:focus-visible) {
+  box-shadow: var(--focus-ring);
+}
+
+.track-picker.is-invalid .track-option {
+  border-color: rgba(244, 63, 94, 0.6);
+}
+
+/* ---------- Checkbox ---------- */
+.checkbox {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+  cursor: pointer;
+}
+
+.checkbox input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+.checkbox__box {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  margin-top: 1px;
+  border: 2px solid var(--color-border-strong);
+  border-radius: 6px;
+  background-color: rgba(10, 15, 31, 0.65);
+  transition: background var(--duration-base) var(--ease-out), border-color var(--duration-base) var(--ease-out);
+}
+
+.checkbox__box::after {
+  content: "";
+  width: 6px;
+  height: 11px;
+  margin-top: -2px;
+  border: solid var(--color-text-on-primary);
+  border-width: 0 2.5px 2.5px 0;
+  transform: rotate(45deg) scale(0);
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.checkbox input:checked + .checkbox__box {
+  border-color: transparent;
+  background: var(--gradient-brand);
+}
+
+.checkbox input:checked + .checkbox__box::after {
+  transform: rotate(45deg) scale(1);
+}
+
+.checkbox input:focus-visible + .checkbox__box {
+  box-shadow: var(--focus-ring);
+}
+
+.field.is-invalid .checkbox__box {
+  border-color: var(--color-error);
+}
+
+/* ---------- Comprovante (ticket) ---------- */
+.ticket {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  text-align: center;
+  animation: ticket-in 600ms var(--ease-out) both;
+}
+
+.ticket:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.ticket[hidden] {
+  display: none;
+}
+
+.ticket__check {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-success), #16A34A);
+  color: #fff;
+  box-shadow: 0 0 0 8px rgba(34, 197, 94, 0.15), 0 10px 30px rgba(34, 197, 94, 0.3);
+  animation: pop 500ms var(--ease-out) 150ms both;
+}
+
+.ticket__title {
+  font-size: var(--fs-xl);
+}
+
+.ticket__subtitle {
+  color: var(--color-text-muted);
+}
+
+.ticket__stub {
+  position: relative;
+  width: 100%;
+  margin-top: var(--space-3);
+  padding: var(--space-5);
+  border: var(--border-width) solid var(--color-border-strong);
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(circle at 100% 0%, rgba(139, 92, 246, 0.25), transparent 50%),
+    radial-gradient(circle at 0% 100%, rgba(59, 130, 246, 0.2), transparent 50%),
+    var(--color-surface);
+  text-align: left;
+}
+
+/* Recortes laterais de "ingresso" */
+.ticket__stub::before,
+.ticket__stub::after {
+  content: "";
+  position: absolute;
+  top: 62%;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-color: var(--color-bg-alt);
+  border: var(--border-width) solid var(--color-border-strong);
+}
+
+.ticket__stub::before { left: -12px; clip-path: inset(0 0 0 50%); }
+.ticket__stub::after  { right: -12px; clip-path: inset(0 50% 0 0); }
+
+.ticket__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.ticket__brand {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+}
+
+.ticket__demo {
+  padding: 2px var(--space-2);
+  border: var(--border-width) solid rgba(0, 212, 255, 0.4);
+  border-radius: var(--radius-full);
+  color: var(--color-cyan);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.ticket__data {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+}
+
+.ticket__row--full {
+  grid-column: span 2;
+}
+
+.ticket__row dt {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.ticket__row dd {
+  font-weight: var(--fw-semibold);
+  overflow-wrap: anywhere;
+}
+
+.ticket__code {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  margin-top: var(--space-5);
+  padding-top: var(--space-4);
+  border-top: 2px dashed var(--color-border-strong);
+}
+
+.ticket__code-label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.ticket__code-value {
+  font-family: var(--font-mono);
+  font-size: clamp(1.5rem, 1.1rem + 2vw, 2rem);
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.08em;
+  background: var(--gradient-electric);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--color-cyan);
+}
+
+.ticket__meta {
+  margin-top: var(--space-3);
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+  max-width: none;
+}
+
+.ticket__new {
+  margin-top: var(--space-3);
+}
 
 /* ---------- Toast ---------- */
-/* Etapa 8 */
+.toast-region {
+  position: fixed;
+  right: var(--space-4);
+  bottom: var(--space-4);
+  left: var(--space-4);
+  z-index: var(--z-toast);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--space-2);
+  pointer-events: none;
+}
+
+.toast {
+  --toast-color: var(--color-primary);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  width: min(100%, 400px);
+  padding: var(--space-3) var(--space-3) var(--space-3) var(--space-4);
+  border: var(--border-width) solid var(--color-border-strong);
+  border-left: 3px solid var(--toast-color);
+  border-radius: var(--radius-md);
+  background-color: rgba(22, 30, 61, 0.96);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-lg);
+  pointer-events: auto;
+  animation: toast-in 350ms var(--ease-out) both;
+}
+
+.toast--success { --toast-color: var(--color-success); }
+.toast--error   { --toast-color: var(--color-error); }
+.toast--info    { --toast-color: var(--color-cyan); }
+
+.toast.is-leaving {
+  animation: toast-out 250ms var(--ease-in-out) both;
+}
+
+.toast__icon {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--toast-color);
+}
+
+.toast__text {
+  flex: 1;
+  font-size: var(--fs-sm);
+  color: var(--color-text);
+}
+
+.toast__close {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-sm);
+  font-size: 1.25rem;
+  line-height: 1;
+  color: var(--color-text-muted);
+}
+
+.toast__close:hover {
+  color: var(--color-text);
+  background-color: rgba(148, 163, 196, 0.1);
+}

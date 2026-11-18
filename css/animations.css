@@ -60,6 +60,36 @@
   to   { transform: translateY(0);    opacity: 1; }
 }
 
+/* Leve tremida na mensagem de erro de um campo */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25%      { transform: translateX(-4px); }
+  75%      { transform: translateX(4px); }
+}
+
+/* Entrada do comprovante */
+@keyframes ticket-in {
+  from { opacity: 0; transform: translateY(16px) scale(0.98); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* "Pop" do ícone de confirmação */
+@keyframes pop {
+  0%   { transform: scale(0); }
+  70%  { transform: scale(1.12); }
+  100% { transform: scale(1); }
+}
+
+/* Toasts */
+@keyframes toast-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes toast-out {
+  to { opacity: 0; transform: translateX(16px); }
+}
+
 /* ---------- Entrada do Hero ---------- */
 .hero__content > *,
 .hero__aside {
