@@ -6,7 +6,9 @@
 Landing page de um evento acadêmico de tecnologia, desenvolvida para a disciplina de
 **Desenvolvimento de Interfaces** com HTML5, CSS3 e JavaScript puro (sem frameworks e sem backend).
 
-**🔗 Site publicado:** _adicione aqui o link do GitHub Pages_ (ex.: `https://<usuario>.github.io/devconecta-2027/`)
+**🔗 Site publicado:** https://netoxyz.github.io/devconecta-2027/
+
+**📁 Repositório:** https://github.com/netoxyz/devconecta-2027
 
 ---
 
@@ -257,8 +259,8 @@ Exemplo de inscrição salva:
 2. No repositório, acesse **Settings → Pages**.
 3. Em **Build and deployment**, escolha **Source: Deploy from a branch**.
 4. Selecione a branch **`main`** e a pasta **`/ (root)`**. Clique em **Save**.
-5. Aguarde alguns minutos. O site ficará disponível em `https://<usuario>.github.io/devconecta-2027/`.
-6. Copie o link e cole no início deste README, no campo **Site publicado**.
+5. Aguarde alguns minutos. O site ficará disponível em `https://<usuario>.github.io/devconecta-2027/`
+   (neste projeto: https://netoxyz.github.io/devconecta-2027/).
 
 **Por que o projeto já é compatível com o GitHub Pages:**
 - Só tem arquivos estáticos, sem backend e sem etapa de build.
