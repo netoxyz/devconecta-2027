@@ -46,6 +46,14 @@ main > .section:first-child {
   max-width: 22ch;
 }
 
+/* Parágrafo de apoio abaixo do título de seção */
+.section__lead {
+  max-width: 60ch;
+  margin-top: var(--space-4);
+  font-size: var(--fs-md);
+  color: var(--color-text-muted);
+}
+
 /* ---------- Header / Navbar ---------- */
 .site-header {
   position: fixed;

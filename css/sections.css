@@ -233,38 +233,38 @@ main > .hero:first-child {
 }
 
 /* ----- Ilustração do chip (desktop) ----- */
-.chip {
+.hero-chip {
   width: 100%;
   height: auto;
   overflow: visible;
 }
 
-.chip__orbit {
+.hero-chip__orbit {
   transform-box: fill-box;
   transform-origin: center;
   animation: spin 60s linear infinite;
 }
 
-.chip__orbit--reverse {
+.hero-chip__orbit--reverse {
   animation-duration: 45s;
   animation-direction: reverse;
 }
 
 /* Pulso de luz: um traço curto percorrendo a trilha */
-.chip__pulse {
+.hero-chip__pulse {
   stroke-dasharray: 24 400;
   stroke-dashoffset: 24;
   opacity: 0.9;
   animation: trace 4.5s var(--ease-in-out) infinite;
 }
 
-.chip__pulse--d2 { animation-delay: 0.7s; }
-.chip__pulse--d3 { animation-delay: 1.4s; }
-.chip__pulse--d4 { animation-delay: 2.1s; }
-.chip__pulse--d5 { animation-delay: 2.8s; }
-.chip__pulse--d6 { animation-delay: 3.5s; }
+.hero-chip__pulse--d2 { animation-delay: 0.7s; }
+.hero-chip__pulse--d3 { animation-delay: 1.4s; }
+.hero-chip__pulse--d4 { animation-delay: 2.1s; }
+.hero-chip__pulse--d5 { animation-delay: 2.8s; }
+.hero-chip__pulse--d6 { animation-delay: 3.5s; }
 
-.chip__label {
+.hero-chip__label {
   font-family: var(--font-heading);
   font-size: 40px;
   font-weight: 700;
@@ -272,7 +272,7 @@ main > .hero:first-child {
   letter-spacing: 0.04em;
 }
 
-.chip__sublabel {
+.hero-chip__sublabel {
   font-family: var(--font-mono);
   font-size: 16px;
   fill: #00D4FF;
@@ -612,7 +612,127 @@ main > .hero:first-child {
 }
 
 /* ---------- Programação (#programacao) ---------- */
-/* Etapa 5 */
+.schedule__controls {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  margin-bottom: var(--space-7);
+}
+
+.schedule__panel:focus-visible {
+  border-radius: var(--radius-lg);
+}
+
+.schedule__empty {
+  padding: var(--space-6);
+  border: var(--border-width) dashed var(--color-border-strong);
+  border-radius: var(--radius-lg);
+  text-align: center;
+  color: var(--color-text-muted);
+  max-width: none;
+}
+
+/* Linha do tempo (mobile-first: horário acima do card) */
+.timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  padding-left: var(--space-6);
+}
+
+/* Linha vertical */
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  left: 7px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--color-primary), var(--color-purple), transparent);
+  opacity: 0.5;
+}
+
+.timeline__item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  animation: fade-up var(--duration-slow) var(--ease-out) both;
+  animation-delay: calc(var(--i, 0) * 70ms);
+}
+
+.timeline__time {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+}
+
+.timeline__start {
+  font-size: var(--fs-md);
+  font-weight: var(--fw-medium);
+  color: var(--color-text);
+}
+
+.timeline__end {
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+}
+
+/* Marcador na linha */
+.timeline__dot {
+  position: absolute;
+  top: 6px;
+  left: calc(-1 * var(--space-6) + 1px);
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--color-cyan);
+  border-radius: 50%;
+  background-color: var(--color-bg-alt);
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.45);
+}
+
+/* Tablet/desktop: horário em coluna à esquerda da linha */
+@media (min-width: 768px) {
+  .schedule__controls {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .timeline {
+    padding-left: 0;
+  }
+
+  .timeline::before {
+    left: calc(120px + var(--space-5) + 7px);
+  }
+
+  .timeline__item {
+    display: grid;
+    grid-template-columns: 120px minmax(0, 1fr);
+    column-gap: calc(var(--space-5) * 2 + 16px);
+    align-items: start;
+  }
+
+  .timeline__time {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2px;
+    padding-top: var(--space-4);
+  }
+
+  .timeline__start {
+    font-size: var(--fs-lg);
+  }
+
+  .timeline__dot {
+    top: calc(var(--space-4) + 6px);
+    left: calc(120px + var(--space-5));
+  }
+}
 
 /* ---------- Palestrantes (#palestrantes) ---------- */
 /* Etapa 6 */

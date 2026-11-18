@@ -184,7 +184,7 @@
         <!-- Coluna lateral: ilustração (telas grandes) e contagem regressiva -->
         <div class="hero__aside">
           <div class="hero__visual" aria-hidden="true">
-            <svg class="chip" viewBox="0 0 480 480" fill="none" focusable="false">
+            <svg class="hero-chip" viewBox="0 0 480 480" fill="none" focusable="false">
               <defs>
                 <linearGradient id="chip-stroke" x1="0" y1="0" x2="1" y2="1">
                   <stop offset="0%" stop-color="#00D4FF"/>
@@ -219,11 +219,11 @@
               <circle cx="240" cy="240" r="200" fill="url(#chip-glow)"/>
 
               <!-- Órbitas -->
-              <circle class="chip__orbit" cx="240" cy="240" r="215" stroke="rgba(148,163,196,0.18)" stroke-dasharray="2 10"/>
-              <circle class="chip__orbit chip__orbit--reverse" cx="240" cy="240" r="170" stroke="rgba(59,130,246,0.22)" stroke-dasharray="40 14"/>
+              <circle class="hero-chip__orbit" cx="240" cy="240" r="215" stroke="rgba(148,163,196,0.18)" stroke-dasharray="2 10"/>
+              <circle class="hero-chip__orbit hero-chip__orbit--reverse" cx="240" cy="240" r="170" stroke="rgba(59,130,246,0.22)" stroke-dasharray="40 14"/>
 
               <!-- Trilhas base -->
-              <g class="chip__traces" stroke="rgba(148,163,196,0.28)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <g class="hero-chip__traces" stroke="rgba(148,163,196,0.28)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <use href="#t1"/><use href="#t2"/><use href="#t3"/><use href="#t4"/>
                 <use href="#t5"/><use href="#t6"/><use href="#t7"/><use href="#t8"/>
                 <use href="#t9"/><use href="#t10"/><use href="#t11"/><use href="#t12"/>
@@ -231,12 +231,12 @@
 
               <!-- Pulsos de luz percorrendo as trilhas -->
               <g stroke="url(#chip-stroke)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <use class="chip__pulse" href="#t1"/>
-                <use class="chip__pulse chip__pulse--d2" href="#t5"/>
-                <use class="chip__pulse chip__pulse--d3" href="#t8"/>
-                <use class="chip__pulse chip__pulse--d4" href="#t12"/>
-                <use class="chip__pulse chip__pulse--d5" href="#t3"/>
-                <use class="chip__pulse chip__pulse--d6" href="#t9"/>
+                <use class="hero-chip__pulse" href="#t1"/>
+                <use class="hero-chip__pulse hero-chip__pulse--d2" href="#t5"/>
+                <use class="hero-chip__pulse hero-chip__pulse--d3" href="#t8"/>
+                <use class="hero-chip__pulse hero-chip__pulse--d4" href="#t12"/>
+                <use class="hero-chip__pulse hero-chip__pulse--d5" href="#t3"/>
+                <use class="hero-chip__pulse hero-chip__pulse--d6" href="#t9"/>
               </g>
 
               <!-- Terminais -->
@@ -250,8 +250,8 @@
               <!-- Processador central -->
               <rect x="170" y="170" width="140" height="140" rx="22" fill="url(#chip-fill)" stroke="url(#chip-stroke)" stroke-width="2.5"/>
               <rect x="188" y="188" width="104" height="104" rx="14" stroke="rgba(148,163,196,0.2)" stroke-dasharray="4 6"/>
-              <text x="240" y="236" text-anchor="middle" class="chip__label">DC</text>
-              <text x="240" y="266" text-anchor="middle" class="chip__sublabel">2027</text>
+              <text x="240" y="236" text-anchor="middle" class="hero-chip__label">DC</text>
+              <text x="240" y="266" text-anchor="middle" class="hero-chip__sublabel">2027</text>
             </svg>
 
             <!-- Janela de código decorativa -->
@@ -449,11 +449,38 @@
     <!-- 4. PROGRAMAÇÃO -->
     <section class="section section--alt" id="programacao" aria-labelledby="programacao-titulo">
       <div class="container">
-        <header class="section__header">
-          <h2 id="programacao-titulo" class="section__title">Programação</h2>
+        <header class="section__header schedule__header" data-reveal>
+          <p class="section__eyebrow">Programação</p>
+          <h2 id="programacao-titulo" class="section__title">
+            Dois dias de conhecimento.
+            <span class="text-gradient">Infinitas possibilidades.</span>
+          </h2>
+          <p class="section__lead">
+            Palestras, workshops e painéis distribuídos em quatro trilhas. Escolha o dia,
+            filtre pelos temas que mais combinam com você e monte o seu roteiro.
+          </p>
         </header>
-        <!-- Abas por dia, filtros por trilha e linha do tempo: Etapa 5 -->
-        <div class="schedule" data-schedule></div>
+
+        <!-- Abas, filtros e atividades são gerados por js/modules/schedule.js
+             a partir dos dados em js/data/schedule.js -->
+        <div class="schedule" data-schedule>
+          <div class="schedule__controls">
+            <div class="tabs" role="tablist" aria-label="Dias do evento" data-schedule-tabs></div>
+            <div class="chips" role="group" aria-label="Filtrar por categoria" data-schedule-filters></div>
+          </div>
+
+          <div class="schedule__panel" role="tabpanel" id="schedule-panel" tabindex="0" data-schedule-panel>
+            <p class="sr-only" aria-live="polite" data-schedule-status></p>
+            <ol class="timeline" data-schedule-list></ol>
+            <p class="schedule__empty" data-schedule-empty hidden>
+              Nenhuma atividade desta categoria neste dia. Experimente outro filtro ou o outro dia.
+            </p>
+          </div>
+
+          <noscript>
+            <p class="schedule__empty">Ative o JavaScript para visualizar a programação completa.</p>
+          </noscript>
+        </div>
       </div>
     </section>
 
