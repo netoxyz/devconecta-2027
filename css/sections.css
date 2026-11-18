@@ -4,7 +4,385 @@
    ========================================================================== */
 
 /* ---------- Hero (#inicio) ---------- */
-/* Etapa 3 */
+/* O espaçamento superior (navbar fixa) vem de layout.css:
+   main > .section:first-child */
+.hero {
+  position: relative;
+  isolation: isolate;          /* fundo decorativo fica atrás do conteúdo */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  min-height: 100svh;
+}
+
+/* O Hero usa um respiro superior menor que as demais seções,
+   mas sempre somado à altura da navbar fixa. */
+main > .hero:first-child {
+  padding-top: calc(var(--navbar-height) + var(--space-7));
+  padding-bottom: var(--space-8);
+}
+
+.hero__inner {
+  position: relative;
+  display: grid;
+  gap: var(--space-7);
+  align-items: center;
+}
+
+.hero__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-5);
+}
+
+.hero__title {
+  max-width: 14ch;
+  font-size: var(--fs-3xl);
+  letter-spacing: -0.035em;
+}
+
+.hero__lead {
+  max-width: 56ch;
+  font-size: var(--fs-md);
+  color: var(--color-text-muted);
+}
+
+/* Data e local */
+.hero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-6);
+}
+
+.hero__meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-weight: var(--fw-medium);
+  color: var(--color-text);
+}
+
+.hero__meta-item svg {
+  flex-shrink: 0;
+  color: var(--color-cyan);
+}
+
+/* Botões */
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+
+/* Indicadores */
+.hero__stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-4);
+  width: 100%;
+  max-width: 520px;
+  margin-top: var(--space-3);
+  padding-top: var(--space-5);
+  border-top: var(--border-width) solid var(--color-border);
+}
+
+.hero__stats .stat + .stat {
+  padding-left: var(--space-4);
+  border-left: var(--border-width) solid var(--color-border);
+}
+
+/* Coluna lateral */
+.hero__aside {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  width: 100%;
+}
+
+/* Ilustração: só aparece em telas grandes */
+.hero__visual {
+  display: none;
+}
+
+/* ----- Fundo decorativo ----- */
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Grade técnica que se dissolve nas bordas */
+.hero__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(148, 163, 196, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 196, 0.07) 1px, transparent 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 60% 40%, #000 30%, transparent 80%);
+  mask-image: radial-gradient(ellipse 80% 70% at 60% 40%, #000 30%, transparent 80%);
+}
+
+/* Iluminação difusa */
+.hero__glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.5;
+}
+
+.hero__glow--blue {
+  top: -10%;
+  left: -15%;
+  width: 60vw;
+  max-width: 640px;
+  aspect-ratio: 1;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.55), transparent 70%);
+  animation: glow-drift 18s ease-in-out infinite alternate;
+}
+
+.hero__glow--purple {
+  right: -15%;
+  bottom: -10%;
+  width: 55vw;
+  max-width: 600px;
+  aspect-ratio: 1;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.5), transparent 70%);
+  animation: glow-drift 22s ease-in-out infinite alternate-reverse;
+}
+
+/* Trilhas de circuito no canto direito */
+.hero__circuits {
+  position: absolute;
+  top: 12%;
+  right: 0;
+  width: min(60vw, 600px);
+  color: rgba(59, 130, 246, 0.25);
+}
+
+/* Formas geométricas flutuantes */
+.hero__shape {
+  position: absolute;
+  display: block;
+  color: var(--color-purple);
+  opacity: 0.55;
+  animation: float 9s ease-in-out infinite;
+}
+
+.hero__shape--ring {
+  top: 18%;
+  right: 8%;
+  width: 56px;
+  height: 56px;
+  border: 2px solid rgba(0, 212, 255, 0.45);
+  border-radius: 50%;
+}
+
+.hero__shape--square {
+  bottom: 14%;
+  left: 4%;
+  width: 34px;
+  height: 34px;
+  border: 2px solid rgba(139, 92, 246, 0.55);
+  border-radius: 6px;
+  --float-rotate: 45deg;
+  animation-duration: 11s;
+  animation-delay: -3s;
+}
+
+.hero__shape--plus {
+  top: 22%;
+  left: 46%;
+  width: 18px;
+  height: 18px;
+  animation-duration: 7s;
+  animation-delay: -2s;
+}
+
+.hero__shape--plus::before,
+.hero__shape--plus::after {
+  content: "";
+  position: absolute;
+  background-color: var(--color-cyan);
+  border-radius: 2px;
+}
+
+.hero__shape--plus::before { left: 8px; top: 0; width: 2px; height: 18px; }
+.hero__shape--plus::after  { top: 8px; left: 0; width: 18px; height: 2px; }
+
+.hero__shape--dots {
+  bottom: 8%;
+  right: 38%;
+  width: 72px;
+  height: 48px;
+  background-image: radial-gradient(rgba(148, 163, 196, 0.6) 1.5px, transparent 1.5px);
+  background-size: 12px 12px;
+  animation-duration: 12s;
+}
+
+.hero__shape--triangle {
+  top: 62%;
+  right: 4%;
+  width: 36px;
+  height: 32px;
+  animation-duration: 10s;
+  animation-delay: -5s;
+}
+
+/* ----- Ilustração do chip (desktop) ----- */
+.chip {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.chip__orbit {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: spin 60s linear infinite;
+}
+
+.chip__orbit--reverse {
+  animation-duration: 45s;
+  animation-direction: reverse;
+}
+
+/* Pulso de luz: um traço curto percorrendo a trilha */
+.chip__pulse {
+  stroke-dasharray: 24 400;
+  stroke-dashoffset: 24;
+  opacity: 0.9;
+  animation: trace 4.5s var(--ease-in-out) infinite;
+}
+
+.chip__pulse--d2 { animation-delay: 0.7s; }
+.chip__pulse--d3 { animation-delay: 1.4s; }
+.chip__pulse--d4 { animation-delay: 2.1s; }
+.chip__pulse--d5 { animation-delay: 2.8s; }
+.chip__pulse--d6 { animation-delay: 3.5s; }
+
+.chip__label {
+  font-family: var(--font-heading);
+  font-size: 40px;
+  font-weight: 700;
+  fill: #E6EAF5;
+  letter-spacing: 0.04em;
+}
+
+.chip__sublabel {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  fill: #00D4FF;
+  letter-spacing: 0.3em;
+}
+
+/* ----- Tablet (768px+) ----- */
+@media (min-width: 768px) {
+  .hero__stats {
+    gap: var(--space-5);
+  }
+
+  .hero__stats .stat + .stat {
+    padding-left: var(--space-5);
+  }
+
+  .hero__aside {
+    max-width: 600px;
+  }
+}
+
+/* ----- Desktop (1024px+): duas colunas ----- */
+@media (min-width: 1024px) {
+  .hero__inner {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: var(--space-8);
+  }
+
+  .hero__content {
+    gap: var(--space-4);
+  }
+
+  .hero__title {
+    font-size: clamp(3rem, 1.5rem + 3.2vw, 4.5rem);
+  }
+
+  .hero__aside {
+    max-width: none;
+  }
+
+  .hero__visual {
+    position: relative;
+    display: block;
+    width: min(100%, 380px);
+    margin-inline: auto;
+    animation: float 10s ease-in-out infinite;
+    --float-distance: -8px;
+  }
+
+  /* A janela de código sobrepõe o canto inferior esquerdo da ilustração */
+  .hero__visual .code-card {
+    position: absolute;
+    left: -12%;
+    bottom: 4%;
+    width: 220px;
+    transform: rotate(-3deg);
+  }
+}
+
+/* ----- Telas menores que desktop: decoração mais discreta ----- */
+@media (max-width: 1023px) {
+  .hero__circuits {
+    top: 4%;
+    opacity: 0.5;
+  }
+
+  /* Formas que disputariam espaço com o texto e os botões */
+  .hero__shape--triangle,
+  .hero__shape--square,
+  .hero__shape--plus {
+    display: none;
+  }
+
+  .hero__shape--ring {
+    top: 9%;
+    right: 5%;
+  }
+}
+
+/* ----- Celular: só grade, brilhos e circuitos no fundo ----- */
+@media (max-width: 767px) {
+  .hero__shape--ring,
+  .hero__shape--dots {
+    display: none;
+  }
+}
+
+/* ----- Celular: botões ocupam a largura toda ----- */
+@media (max-width: 479px) {
+  .hero__actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero__actions .btn {
+    width: 100%;
+  }
+
+  .hero__stats .stat + .stat {
+    padding-left: var(--space-3);
+  }
+
+  .hero__stats {
+    gap: var(--space-3);
+  }
+
+  .stat__label {
+    font-size: var(--fs-xs);
+  }
+}
 
 /* ---------- Sobre (#sobre) ---------- */
 /* Etapa 4 */

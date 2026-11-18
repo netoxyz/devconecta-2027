@@ -148,6 +148,261 @@
   }
 }
 
+/* ---------- Botão grande (variação usada no Hero) ---------- */
+.btn--lg {
+  min-height: 56px;
+  padding: var(--space-4) var(--space-6);
+  font-size: var(--fs-md);
+}
+
+.btn--primary svg {
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.btn--primary:hover svg {
+  transform: translateX(3px);
+}
+
+/* ---------- Selo / badge ---------- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  border: var(--border-width) solid rgba(59, 130, 246, 0.35);
+  border-radius: var(--radius-full);
+  background-color: rgba(59, 130, 246, 0.1);
+  color: var(--color-cyan);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.badge__dot {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-cyan);
+  box-shadow: 0 0 10px var(--color-cyan);
+}
+
+/* Anel que "pulsa" a partir do ponto */
+.badge__dot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background-color: var(--color-cyan);
+  animation: ping 2s var(--ease-out) infinite;
+}
+
+/* ---------- Indicador numérico (stat) ---------- */
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.stat__value {
+  font-family: var(--font-heading);
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-bold);
+  line-height: 1;
+  background: var(--gradient-electric);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--color-cyan);
+}
+
+.stat__label {
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+  line-height: var(--lh-snug);
+}
+
+/* ---------- Contagem regressiva ---------- */
+.countdown {
+  position: relative;
+  padding: var(--space-5);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface-glass);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Borda superior em gradiente, como um "brilho" no topo do card */
+.countdown::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: var(--space-6);
+  right: var(--space-6);
+  height: 1px;
+  background: var(--gradient-electric);
+  opacity: 0.8;
+}
+
+.countdown__label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.countdown__pulse {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-success);
+  box-shadow: 0 0 8px var(--color-success);
+  animation: blink 2s ease-in-out infinite;
+}
+
+.countdown__timer {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-2);
+}
+
+.countdown__unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-3) var(--space-1);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: rgba(10, 15, 31, 0.55);
+  overflow: hidden; /* recorta a animação de troca do número */
+}
+
+.countdown__value {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: clamp(1.5rem, 1rem + 2.4vw, 2.25rem);
+  font-weight: var(--fw-medium);
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums; /* largura fixa dos dígitos */
+  color: var(--color-text);
+}
+
+/* Classe aplicada pelo JS quando o valor muda */
+.countdown__value.is-changing {
+  animation: digit-in 400ms var(--ease-out);
+}
+
+.countdown__name {
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.countdown__done {
+  font-family: var(--font-heading);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-semibold);
+  text-align: center;
+  color: var(--color-text);
+}
+
+.countdown__note {
+  margin-top: var(--space-4);
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+  text-align: center;
+  max-width: none;
+}
+
+/* Celular: rótulos menores para caber "SEGUNDOS" em 4 colunas estreitas */
+@media (max-width: 479px) {
+  .countdown {
+    padding: var(--space-4);
+  }
+
+  .countdown__name {
+    font-size: 0.625rem;
+    letter-spacing: 0.02em;
+  }
+}
+
+/* Telas muito estreitas (ex.: 320px): grade 2 × 2 */
+@media (max-width: 359px) {
+  .countdown__timer {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 480px) {
+  .countdown__timer {
+    gap: var(--space-3);
+  }
+
+  .countdown__unit {
+    padding: var(--space-4) var(--space-2);
+  }
+}
+
+/* ---------- Janela de código decorativa ---------- */
+.code-card {
+  border: var(--border-width) solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  background-color: rgba(17, 24, 51, 0.92);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+
+.code-card__bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: var(--space-2) var(--space-3);
+  border-bottom: var(--border-width) solid var(--color-border);
+}
+
+.code-card__bar span {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: rgba(148, 163, 196, 0.35);
+}
+
+.code-card__bar span:first-child { background-color: var(--color-error); }
+.code-card__bar span:nth-child(2) { background-color: #F5B544; }
+.code-card__bar span:nth-child(3) { background-color: var(--color-success); }
+
+.code-card__bar em {
+  margin-left: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-style: normal;
+  color: var(--color-text-muted);
+}
+
+.code-card__body {
+  padding: var(--space-3) var(--space-4);
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  line-height: 1.7;
+  color: var(--color-text);
+}
+
+.tk-key { color: var(--color-purple); }
+.tk-str { color: var(--color-cyan); }
+.tk-num { color: #F5B544; }
+
 /* ---------- Cards ---------- */
 /* Etapas 4 e 6 */
 

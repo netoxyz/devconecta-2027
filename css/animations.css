@@ -5,7 +5,92 @@
    ========================================================================== */
 
 /* ---------- Keyframes ---------- */
-/* Etapa 3 em diante */
+
+/* Flutuação suave das formas decorativas.
+   Variáveis opcionais: --float-distance e --float-rotate. */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(var(--float-rotate, 0deg));
+  }
+  50% {
+    transform: translateY(var(--float-distance, -16px)) rotate(calc(var(--float-rotate, 0deg) + 8deg));
+  }
+}
+
+/* Deslocamento lento dos brilhos de fundo */
+@keyframes glow-drift {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(6%, 4%) scale(1.08); }
+}
+
+/* Rotação contínua (órbitas) */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Pulso de luz percorrendo uma trilha de circuito */
+@keyframes trace {
+  0%   { stroke-dashoffset: 24;   opacity: 0; }
+  10%  { opacity: 1; }
+  70%  { opacity: 1; }
+  100% { stroke-dashoffset: -400; opacity: 0; }
+}
+
+/* Anel expandindo (ponto "ao vivo") */
+@keyframes ping {
+  0%        { transform: scale(1); opacity: 0.7; }
+  80%, 100% { transform: scale(2.6); opacity: 0; }
+}
+
+/* Piscar suave */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.35; }
+}
+
+/* Troca de dígito da contagem regressiva */
+@keyframes digit-in {
+  from { transform: translateY(-35%); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+/* Entrada do conteúdo do Hero ao carregar a página */
+@keyframes fade-up {
+  from { transform: translateY(16px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+/* ---------- Entrada do Hero ---------- */
+.hero__content > *,
+.hero__aside {
+  animation: fade-up var(--duration-slow) var(--ease-out) both;
+}
+
+.hero__content > :nth-child(1) { animation-delay: 50ms; }
+.hero__content > :nth-child(2) { animation-delay: 120ms; }
+.hero__content > :nth-child(3) { animation-delay: 190ms; }
+.hero__content > :nth-child(4) { animation-delay: 260ms; }
+.hero__content > :nth-child(5) { animation-delay: 330ms; }
+.hero__content > :nth-child(6) { animation-delay: 400ms; }
+.hero__aside                   { animation-delay: 300ms; }
+
+/* ---------- Movimento reduzido ----------
+   base.css já encurta todas as animações; aqui as decorações contínuas
+   são desligadas por completo para ficarem estáticas. */
+@media (prefers-reduced-motion: reduce) {
+  .hero__shape,
+  .hero__glow,
+  .hero__visual,
+  .chip__orbit,
+  .badge__dot::after,
+  .countdown__pulse {
+    animation: none !important;
+  }
+
+  .chip__pulse {
+    display: none;
+  }
+}
 
 /* ---------- Reveal ao rolar ---------- */
 /* Etapa 4 */

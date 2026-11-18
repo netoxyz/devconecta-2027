@@ -78,15 +78,228 @@
 
     <!-- 2. HERO -->
     <section class="section hero" id="inicio" aria-labelledby="hero-titulo">
-      <div class="container">
-        <h1 id="hero-titulo">DevConecta <span class="text-gradient">2027</span></h1>
-        <p class="lead">Evento acadêmico de tecnologia, programação, inteligência artificial e inovação.</p>
-        <!-- Conteúdo completo e contagem regressiva: Etapa 3 -->
-        <div class="hero__countdown" data-countdown aria-live="polite"></div>
-        <div class="hero__actions">
-          <a class="btn btn--primary" href="#inscricao">Garantir minha vaga</a>
-          <a class="btn btn--outline" href="#programacao">Ver programação</a>
+
+      <!-- Fundo decorativo: grade, brilhos, trilhas de circuito e formas flutuantes -->
+      <div class="hero__bg" aria-hidden="true">
+        <div class="hero__grid"></div>
+        <div class="hero__glow hero__glow--blue"></div>
+        <div class="hero__glow hero__glow--purple"></div>
+
+        <svg class="hero__circuits" viewBox="0 0 600 400" fill="none" focusable="false">
+          <g stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M600 60 H470 L440 90 H360"/>
+            <path d="M600 140 H520 L490 110 H420 L400 130 H330"/>
+            <path d="M600 230 H500 L470 260 H390"/>
+            <path d="M600 320 H540 L510 350 H450 L430 370 H380"/>
+          </g>
+          <g fill="currentColor">
+            <circle cx="360" cy="90" r="4"/>
+            <circle cx="330" cy="130" r="4"/>
+            <circle cx="390" cy="260" r="4"/>
+            <circle cx="380" cy="370" r="4"/>
+          </g>
+        </svg>
+
+        <span class="hero__shape hero__shape--ring"></span>
+        <span class="hero__shape hero__shape--square"></span>
+        <span class="hero__shape hero__shape--plus"></span>
+        <span class="hero__shape hero__shape--dots"></span>
+        <svg class="hero__shape hero__shape--triangle" viewBox="0 0 40 36" fill="none" focusable="false">
+          <path d="M20 2 L38 34 H2 Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <div class="container hero__inner">
+
+        <!-- Coluna principal: mensagem e chamadas para ação -->
+        <div class="hero__content">
+          <p class="badge">
+            <span class="badge__dot" aria-hidden="true"></span>
+            Evento acadêmico de tecnologia
+          </p>
+
+          <h1 id="hero-titulo" class="hero__title">
+            O <span class="text-gradient">futuro da tecnologia</span> começa aqui.
+          </h1>
+
+          <p class="hero__lead">
+            O DevConecta 2027 reúne estudantes, professores e profissionais do mercado
+            em dois dias de palestras, oficinas e conexões sobre inteligência artificial,
+            desenvolvimento de software e inovação. Venha aprender com quem está
+            construindo o que vem a seguir.
+          </p>
+
+          <ul class="hero__meta">
+            <li class="hero__meta-item">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+                   stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <rect x="3" y="4" width="18" height="18" rx="2"/>
+                <line x1="16" y1="2" x2="16" y2="6"/>
+                <line x1="8" y1="2" x2="8" y2="6"/>
+                <line x1="3" y1="10" x2="21" y2="10"/>
+              </svg>
+              <span class="sr-only">Data:</span>
+              <time datetime="2027-06-17">17 e 18 de junho de 2027</time>
+            </li>
+            <li class="hero__meta-item">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+                   stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              <span class="sr-only">Local:</span>
+              <span>Brasília - DF</span>
+            </li>
+          </ul>
+
+          <div class="hero__actions">
+            <a class="btn btn--primary btn--lg" href="#inscricao">
+              Garantir minha vaga
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+                   stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <line x1="5" y1="12" x2="19" y2="12"/>
+                <polyline points="12 5 19 12 12 19"/>
+              </svg>
+            </a>
+            <a class="btn btn--outline btn--lg" href="#programacao">Conhecer programação</a>
+          </div>
+
+          <!-- Indicadores do evento (valores fictícios, ajustáveis) -->
+          <ul class="hero__stats">
+            <li class="stat">
+              <span class="stat__value">2</span>
+              <span class="stat__label">dias de evento</span>
+            </li>
+            <li class="stat">
+              <span class="stat__value">4</span>
+              <span class="stat__label">trilhas de conhecimento</span>
+            </li>
+            <li class="stat">
+              <span class="stat__value">12+</span>
+              <span class="stat__label">atividades</span>
+            </li>
+          </ul>
         </div>
+
+        <!-- Coluna lateral: ilustração (telas grandes) e contagem regressiva -->
+        <div class="hero__aside">
+          <div class="hero__visual" aria-hidden="true">
+            <svg class="chip" viewBox="0 0 480 480" fill="none" focusable="false">
+              <defs>
+                <linearGradient id="chip-stroke" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#00D4FF"/>
+                  <stop offset="50%" stop-color="#3B82F6"/>
+                  <stop offset="100%" stop-color="#8B5CF6"/>
+                </linearGradient>
+                <linearGradient id="chip-fill" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#1B2550"/>
+                  <stop offset="100%" stop-color="#111833"/>
+                </linearGradient>
+                <radialGradient id="chip-glow">
+                  <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.45"/>
+                  <stop offset="60%" stop-color="#8B5CF6" stop-opacity="0.12"/>
+                  <stop offset="100%" stop-color="#8B5CF6" stop-opacity="0"/>
+                </radialGradient>
+
+                <!-- Trilhas do circuito (reutilizadas para o "pulso" de luz) -->
+                <path id="t1" d="M180 210 H120 L90 180 H40"/>
+                <path id="t2" d="M180 240 H30"/>
+                <path id="t3" d="M180 270 H120 L90 300 H50"/>
+                <path id="t4" d="M300 210 H360 L390 180 H440"/>
+                <path id="t5" d="M300 240 H450"/>
+                <path id="t6" d="M300 270 H360 L390 300 H430"/>
+                <path id="t7" d="M210 180 V120 L180 90 V40"/>
+                <path id="t8" d="M240 180 V30"/>
+                <path id="t9" d="M270 180 V120 L300 90 V50"/>
+                <path id="t10" d="M210 300 V360 L180 390 V430"/>
+                <path id="t11" d="M240 300 V450"/>
+                <path id="t12" d="M270 300 V360 L300 390 V440"/>
+              </defs>
+
+              <circle cx="240" cy="240" r="200" fill="url(#chip-glow)"/>
+
+              <!-- Órbitas -->
+              <circle class="chip__orbit" cx="240" cy="240" r="215" stroke="rgba(148,163,196,0.18)" stroke-dasharray="2 10"/>
+              <circle class="chip__orbit chip__orbit--reverse" cx="240" cy="240" r="170" stroke="rgba(59,130,246,0.22)" stroke-dasharray="40 14"/>
+
+              <!-- Trilhas base -->
+              <g class="chip__traces" stroke="rgba(148,163,196,0.28)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <use href="#t1"/><use href="#t2"/><use href="#t3"/><use href="#t4"/>
+                <use href="#t5"/><use href="#t6"/><use href="#t7"/><use href="#t8"/>
+                <use href="#t9"/><use href="#t10"/><use href="#t11"/><use href="#t12"/>
+              </g>
+
+              <!-- Pulsos de luz percorrendo as trilhas -->
+              <g stroke="url(#chip-stroke)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <use class="chip__pulse" href="#t1"/>
+                <use class="chip__pulse chip__pulse--d2" href="#t5"/>
+                <use class="chip__pulse chip__pulse--d3" href="#t8"/>
+                <use class="chip__pulse chip__pulse--d4" href="#t12"/>
+                <use class="chip__pulse chip__pulse--d5" href="#t3"/>
+                <use class="chip__pulse chip__pulse--d6" href="#t9"/>
+              </g>
+
+              <!-- Terminais -->
+              <g fill="#161E3D" stroke="url(#chip-stroke)" stroke-width="2">
+                <circle cx="40" cy="180" r="5"/><circle cx="30" cy="240" r="5"/><circle cx="50" cy="300" r="5"/>
+                <circle cx="440" cy="180" r="5"/><circle cx="450" cy="240" r="5"/><circle cx="430" cy="300" r="5"/>
+                <circle cx="180" cy="40" r="5"/><circle cx="240" cy="30" r="5"/><circle cx="300" cy="50" r="5"/>
+                <circle cx="180" cy="430" r="5"/><circle cx="240" cy="450" r="5"/><circle cx="300" cy="440" r="5"/>
+              </g>
+
+              <!-- Processador central -->
+              <rect x="170" y="170" width="140" height="140" rx="22" fill="url(#chip-fill)" stroke="url(#chip-stroke)" stroke-width="2.5"/>
+              <rect x="188" y="188" width="104" height="104" rx="14" stroke="rgba(148,163,196,0.2)" stroke-dasharray="4 6"/>
+              <text x="240" y="236" text-anchor="middle" class="chip__label">DC</text>
+              <text x="240" y="266" text-anchor="middle" class="chip__sublabel">2027</text>
+            </svg>
+
+            <!-- Janela de código decorativa -->
+            <div class="code-card">
+              <div class="code-card__bar">
+                <span></span><span></span><span></span>
+                <em>evento.js</em>
+              </div>
+<pre class="code-card__body"><code><span class="tk-key">const</span> evento = {
+  nome: <span class="tk-str">"DevConecta"</span>,
+  ano: <span class="tk-num">2027</span>,
+  local: <span class="tk-str">"Brasília"</span>,
+};</code></pre>
+            </div>
+          </div>
+
+          <!-- Contagem regressiva (lógica em js/modules/countdown.js) -->
+          <div class="countdown" data-countdown>
+            <p class="countdown__label" id="countdown-label">
+              <span class="countdown__pulse" aria-hidden="true"></span>
+              Contagem regressiva para a abertura
+            </p>
+
+            <div class="countdown__timer" role="timer" aria-labelledby="countdown-label">
+              <div class="countdown__unit">
+                <span class="countdown__value" data-unit="days">--</span>
+                <span class="countdown__name">Dias</span>
+              </div>
+              <div class="countdown__unit">
+                <span class="countdown__value" data-unit="hours">--</span>
+                <span class="countdown__name">Horas</span>
+              </div>
+              <div class="countdown__unit">
+                <span class="countdown__value" data-unit="minutes">--</span>
+                <span class="countdown__name">Minutos</span>
+              </div>
+              <div class="countdown__unit">
+                <span class="countdown__value" data-unit="seconds">--</span>
+                <span class="countdown__name">Segundos</span>
+              </div>
+            </div>
+
+            <p class="countdown__done" data-countdown-done role="status" hidden></p>
+
+            <p class="countdown__note">17 de junho de 2027 · 09h, horário de Brasília</p>
+          </div>
+        </div>
+
       </div>
     </section>
 
